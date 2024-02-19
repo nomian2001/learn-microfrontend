@@ -27,7 +27,7 @@ jobs:
               uses: actions/upload-artifact@v2
               with:
                   name: build-artifacts
-                  path: dist # Assuming the build artifacts are located at 'container/dist
+                  path: container/dist # Assuming the build artifacts are located at 'container/dist
 
     deploy:
         needs: build
@@ -37,7 +37,7 @@ jobs:
               uses: actions/download-artifact@v2
               with:
                   name: build-artifacts
-                  path: dist
+                  path: container/dist
 
             - uses: shinyinc/action-aws-cli@v1.2
             - run: aws s3 sync dist s3://${{ secrets.AWS_S3_BUCKET_NAME }}/container/latest
