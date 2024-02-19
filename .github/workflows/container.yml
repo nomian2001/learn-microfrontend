@@ -14,7 +14,6 @@ defaults:
 jobs:
     build:
         runs-on: ubuntu-latest
-
         steps:
             - uses: actions/checkout@v2
             - run: npm install
@@ -22,9 +21,9 @@ jobs:
 
             - name: Upload build artifacts
             - uses: actions/upload-artifact@v2
-            with:
-              name: build-artifacts
-              path: container/dist # Adjust this path to where your build artifacts are located
+              with:
+                name: build-artifacts
+                path: container/dist # Adjust this path to where your build artifacts are located
 
 
     deploy: 
@@ -32,7 +31,7 @@ jobs:
       runs-on: ubuntu-latest
       steps: 
         - name: Download build artifacts
-          uses: actions/download-artifact@v2
+        - uses: actions/download-artifact@v2
           with:
             name: build-artifacts
             path: dist
